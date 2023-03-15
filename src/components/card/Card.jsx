@@ -2,32 +2,27 @@ import './card.css';
 import Button from "../button/Button";
 import HeartButton from "../heartButton/HeartButton"
 
-function Card({...props}){
-    const sale = props.hasSale ? <div className="sale"></div> : '';
-    const inStock = props.canBuy? <Button isLight={true}text="buy now" /> : '';
+function Card({hasSale, canBuy, imageSrc, title, description, previousPrice, price, id}){
     return (
-        <>
             <div className="card">
                 <div className="extraInfo">
-                    {sale}
-                    <HeartButton></HeartButton>
+                    { hasSale ? <div className="sale"></div> : null}
+                    <HeartButton id={id}/>
                 </div>
                 
-                <img src={props.imageSrc} alt="" />
-                <h3 className="card-title">{props.title}</h3>
-                <p className="card-description">{props.description}</p>
+                <img src={imageSrc} alt="" />
+                <h3 className="card-title">{title}</h3>
+                <p className="card-description">{description}</p>
                 <div className="prices-container">
-                    <span className="card-price">{props.price}</span>
-                    {props.hasSale ? <span className="card-previous_price">{props.previousPrice}</span> : ''}
+                    <span className="card-price">${price}</span>
+                    {hasSale && previousPrice ? <span className="card-previous_price">${previousPrice}</span> : null}
                 </div>
                 
                 <div className="button-container">
-                    <Button isLight={false} text="learn more" />
-                    {inStock}
+                    <Button text="learn more" />
+                    {canBuy? <Button isLight text="buy now" /> : null}
                 </div>
-               
-            </div>
-        </>
+          </div>
     )
 }
 

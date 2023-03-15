@@ -1,8 +1,8 @@
-import "./button.css"
+import "./button.css";
 
-function Button({isLight, text}) {
-    const buttonStyle = isLight ? 'light' : 'dark';
-    return <button className={buttonStyle}>{text}</button>
+function Button({ isLight, text }) {
+  const buttonClassNames = isLight ? "light" : "dark";
+  return <button className={buttonClassNames}>{text}</button>;
 }
 
 export default Button;
