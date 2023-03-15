@@ -1,0 +1,48 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 373.33px;
+    height: 567px;
+
+}
+
+.card-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-transform: uppercase;
+    margin: 20px 0 8px;
+}
+
+.extraInfo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.sale {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background-image: url('./../../../public/sale.png');
+}
+
+ .card-description {
+    margin: 8px 0;
+}
+
+
+.prices-container {
+    display: flex;
+    gap: 10px;
+    margin: 12px 0 15px;
+}
+.card-previous_price {
+    text-decoration-line: line-through;
+
+color: #BDBDBD;
+}
