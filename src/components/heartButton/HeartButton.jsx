@@ -14,7 +14,7 @@ function HeartButton({id}) {
             return  !previousIsChoose;
             
         })}>
-            <img src="/heart.png" alt="" />
+            <img src="/heart.png" alt="heart" />
         </button>
     )
 }

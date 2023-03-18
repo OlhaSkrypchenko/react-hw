@@ -10,7 +10,7 @@ function Card({hasSale, canBuy, imageSrc, title, description, previousPrice, pri
                     <HeartButton id={id}/>
                 </div>
                 
-                <img src={imageSrc} alt="" />
+                <img src={imageSrc} alt="goods-item" />
                 <h3 className="card-title">{title}</h3>
                 <p className="card-description">{description}</p>
                 <div className="prices-container">
