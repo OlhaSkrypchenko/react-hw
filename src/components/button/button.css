@@ -1,0 +1,36 @@
+.btn {
+  width: 435px;
+  height: 65px;
+  background: #000000;
+  border-radius: 20px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.btn-light {
+  background: #fff;
+  color: #000;
+}
+
+.btn-dark {
+  background: #000000;
+  color: #ffffff;
+}
+
+.text {
+  position: relative;
+}
+
+.btn-light .text::before {
+  content: url(./../../../public/googleSign.svg);
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: -42px;
+  top: 2px;
+}

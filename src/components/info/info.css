@@ -1,0 +1,38 @@
+.info {
+  width: 800px;
+  height: 1024px;
+  background: url(./../../../public/background.png);
+  filter: drop-shadow(7px 0px 20px rgba(0, 0, 0, 0.15));
+  color: #fff;
+  padding: 100px 100px 42px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+.author {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.position {
+  font-size: 16px;
+  font-weight: 500;
+}
