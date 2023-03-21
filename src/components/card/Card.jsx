@@ -18,7 +18,7 @@ function getDateFormat(str) {
 function Card({categoryId, image, category, title, date, description, avatar, name, position}) {
     return (
         <div className="card" id={categoryId}>
-            <span className="category">{category}</span>
+            <span className="category">{category.toUpperCase()}</span>
             <img src={image} alt="img" />
             <div className="info">
                 <span className="date">{getDateFormat(date)}</span>
