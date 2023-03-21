@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    column-gap: 20px;
+    row-gap: 70px;
+    margin: 0 auto;
+    padding: 30px 106px;
+    max-width: 1300px;
+}
+
+.error {
+    font-weight: 700;
+    font-size: 40px;
+    margin: 30px auto;
+    text-align: center;
+}
+  
