@@ -24,33 +24,31 @@ img {
   top: 20px;
 }
 
-.info, .author {
-    margin: 0 20px;
+.info,
+.author {
+  margin: 0 20px;
 }
 
 .info {
-    padding: 20px 0 18px;
-    border-bottom: 0.5px solid #E5E5E5;
-  
+  padding: 20px 0 18px;
+  border-bottom: 0.5px solid #e5e5e5;
 }
 
 .title {
-    font-weight: 700;
-font-size: 18px;
-line-height: 25px;
-    height: 50px;
-    margin: 15px 0;
-    overflow-y: hidden;
-
-
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  height: 50px;
+  margin: 15px 0;
+  overflow-y: hidden;
 }
 
 .description {
-    height: 70px;
-    overflow-y: hidden;
-    padding: 5px 0;
-box-sizing: border-box;
-margin: 0;
+  height: 70px;
+  overflow-y: hidden;
+  padding: 5px 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .author {
@@ -82,5 +80,5 @@ margin: 0;
 }
 
 .author-position {
-    color: #6C757D;
+  color: #6c757d;
 }
