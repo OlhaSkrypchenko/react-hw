@@ -1,11 +1,13 @@
+import './toDo.css'
+
 function ToDo({ task, id, handlerDelete, handlerDone, isChecked }) {
   return (
-    <div className="container">
+    <div className="task-container">
         <label className={`task ${isChecked? 'checked':''}`} id={id} onClick={()=> handlerDone(id)}>
-            <input type="checkbox" />
-            <span>{task}</span>
+            <input className="checkbox" type="checkbox" />
+            <span className="task-description">{task}</span>
         </label>
-        <button onClick={()=> handlerDelete(id)}>-</button>
+        <button className="btn-remove" onClick={()=> handlerDelete(id)}>&#8722;</button>
     </div>
     
   );

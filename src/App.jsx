@@ -47,7 +47,7 @@ function App() {
   console.log(tasks);
 
   return (
-    <>
+    <div className="container">
       <h1 className="title">ToDo List</h1>
       <div className="search">
         <input
@@ -62,7 +62,7 @@ function App() {
         
       </div>
       {tasks.map((el) => <ToDo task={el.task} key={el.id} id={el.id} handlerDelete={handleRemoveTask} handlerDone={handleDone} isChecked={el.isDone}/>)}
-    </>
+    </div>
   );
 }
 
