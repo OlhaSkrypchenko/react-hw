@@ -3,7 +3,6 @@
   margin: 48px auto;
 }
 
-
 .title {
   font-weight: 600;
   font-size: 24px;
@@ -13,16 +12,10 @@
 
 .search {
   box-sizing: border-box;
-  width: 756px;
-  /* height: 42px; */
-
+  width: 100%;
   padding: 0 24px;
   margin: 24px 0;
-  /* White */
-
   background: #ffffff;
-  /* Stroke */
-
   border: 1px solid #e7e7e7;
   border-radius: 40px;
   position: relative;

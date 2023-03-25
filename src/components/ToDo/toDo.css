@@ -1,51 +1,81 @@
 .task-container {
-    margin: 12px 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px 24px 20px 27px;
-    display: flex;
-    justify-content: space-between;
+  margin: 12px 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 24px 20px 27px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.task-container:hover {
+  background: #f8fafc;
+  border-radius: 6px;
 }
 
 .btn-remove {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    outline: none;
-    border: 1px solid #3056d3;
-    color: #3056d3;
-    font-size: 18px;
-    background: #fff;
-    cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  outline: none;
+  border: 1px solid #3056d3;
+  color: #3056d3;
+  font-size: 18px;
+  background: #fff;
+  cursor: pointer;
 }
 
 .task {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
 }
 
 .checkbox {
-    margin: 0;
-    position: relative;
+  margin: 0;
+  position: relative;
+  opacity: 0;
 }
 
-.checkbox:before {
-    content: "";
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    top: -6px;
-    border: 1px solid #637381;
-    border-radius: 4px;
+.task-description::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: -4px;
+  left: -37px;
+  border: 1px solid #637381;
+  border-radius: 4px;
 }
 
-.checkbox:checked.checkbox:before{
-    background: #F1F4FF;
-    border: 1px solid #3056D3;
+.task-description::after {
+  content: '';
+  display: none;
+  height: 7.2px;
+  width: 11px;
+  position: absolute;
+  left: -30px;
+  top: 2px;
+  border-right: 1px solid #3056d3;
+  border-top: 1px solid #3056d3;
+  transform: rotate(132deg);
 }
 
-.task-description{
-    text-transform: capitalize;
+.checkbox:checked ~ .task-description:before {
+  background: #f1f4ff;
+  border: 1px solid #3056d3;
+}
+
+.checkbox:checked ~ .task-description::after {
+  display: block;
+}
+
+.task-description {
+  text-transform: capitalize;
+  position: relative;
+}
+
+.task.checked {
+  color: #969a9e;
 }
