@@ -1,0 +1,18 @@
+.btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid #3056d3;
+    color: #3056d3;
+    font-size: 18px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.btn-add {
+    position: absolute;
+    right: 24px;
+    top: 8px;
+  }
+  

@@ -1,4 +1,5 @@
 import './toDo.css';
+import Button from '../Button/Button';
 
 function ToDo({ task, id, handlerDelete, handlerDone, isChecked }) {
   return (
@@ -15,11 +16,7 @@ function ToDo({ task, id, handlerDelete, handlerDone, isChecked }) {
         />
         <span className='task-description'>{task}</span>
       </label>
-      <button
-        className='btn-remove'
-        onClick={() => handlerDelete(id)}>
-        &#8722;
-      </button>
+      <Button type='remove' handlerEvent={handlerDelete} item={id}>&#8722;</Button>
     </div>
   );
 }

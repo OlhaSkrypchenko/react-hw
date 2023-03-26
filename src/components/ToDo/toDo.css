@@ -13,18 +13,6 @@
   border-radius: 6px;
 }
 
-.btn-remove {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  outline: none;
-  border: 1px solid #3056d3;
-  color: #3056d3;
-  font-size: 18px;
-  background: #fff;
-  cursor: pointer;
-}
-
 .task {
   display: flex;
   gap: 24px;

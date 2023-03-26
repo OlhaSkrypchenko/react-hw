@@ -1,15 +1,3 @@
-.container {
-  max-width: 756px;
-  margin: 48px auto;
-}
-
-.title {
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 26px;
-  margin: 24px 0;
-}
-/* 
 .input-container {
   box-sizing: border-box;
   width: 100%;
@@ -30,5 +18,4 @@
   font-size: 14px;
   line-height: 20px;
   color: #637381;
-} */
-
+}

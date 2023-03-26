@@ -1,8 +1,8 @@
 import './App.css';
 
+import { useState, useCallback } from 'react';
 import ToDo from './components/ToDo/ToDo';
-import { useState } from 'react';
-import { useCallback } from 'react';
+import AddTaskInput from './components/AddTaskInput/AddTaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -53,21 +53,12 @@ function App() {
   return (
     <div className='container'>
       <h1 className='title'>ToDo List</h1>
-      <div className='search'>
-        <input
-          className='input'
-          type='text'
-          placeholder='Add new task'
-          value={newTask}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-        />
-        <button
-          className='btn-add'
-          onClick={addNewTask}>
-          +
-        </button>
-      </div>
+      <AddTaskInput
+        valueText={newTask}
+        handlerOnChange={handleChange}
+        handlerOnKeyDown={handleKeyDown}
+        handlerButtonEvent={addNewTask}
+      />
       {tasks.map((el) => (
         <ToDo
           task={el.task}
