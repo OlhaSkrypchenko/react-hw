@@ -6,27 +6,20 @@ import AddTaskInput from './components/AddTaskInput/AddTaskInput';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const [newTask, setNewTask] = useState('');
   const [uniqueId, setUniqueId] = useState(0);
 
-  const addNewTask = useCallback(() => {
-    if (newTask.length > 0) {
-      setUniqueId((prev) => ++prev);
-      setTasks((previousTasks) => [
-        { task: newTask, id: uniqueId, isDone: false },
-        ...previousTasks,
-      ]);
-    }
-
-    setNewTask('');
-  }, [newTask, uniqueId]);
-
-  const handleChange = (e) => setNewTask(e.target.value);
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      addNewTask();
-    }
-  };
+  const addTask = useCallback(
+    (newTask) => {
+      if (newTask.length > 0) {
+        setUniqueId((prev) => ++prev);
+        setTasks((previousTasks) => [
+          { task: newTask, id: uniqueId, isDone: false },
+          ...previousTasks,
+        ]);
+      }
+    },
+    [uniqueId]
+  );
 
   const handleRemoveTask = (id) => {
     setTasks((prev) => prev.filter((el) => el.id !== id));
@@ -53,12 +46,7 @@ function App() {
   return (
     <div className='container'>
       <h1 className='title'>ToDo List</h1>
-      <AddTaskInput
-        valueText={newTask}
-        handlerOnChange={handleChange}
-        handlerOnKeyDown={handleKeyDown}
-        handlerButtonEvent={addNewTask}
-      />
+      <AddTaskInput onAddTask={addTask} />
       {tasks.map((el) => (
         <ToDo
           task={el.task}
