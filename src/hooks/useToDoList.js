@@ -39,7 +39,7 @@ function useToDoList() {
     }
   };
 
-  return [tasks, addTask, handleDone, handleRemoveTask];
+  return {tasks, addTask, handleDone, handleRemoveTask};
 }
 
 export default useToDoList;

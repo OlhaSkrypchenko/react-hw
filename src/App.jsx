@@ -5,8 +5,8 @@ import AddTaskInput from './components/AddTaskInput/AddTaskInput';
 import useToDoList from './hooks/useToDoList';
 
 function App() {
-  
-  const [tasks, addTask, handleDone, handleRemoveTask] = useToDoList();
+
+  const {tasks, addTask, handleDone, handleRemoveTask} = useToDoList();
 
   return (
     <div className='container'>
