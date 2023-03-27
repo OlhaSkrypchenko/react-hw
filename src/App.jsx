@@ -5,14 +5,13 @@ import AddTaskInput from './components/AddTaskInput/AddTaskInput';
 import useToDoList from './hooks/useToDoList';
 
 function App() {
-
-  const {tasks, addTask, handleDone, handleRemoveTask} = useToDoList();
+  const { state, addTask, handleDone, handleRemoveTask } = useToDoList();
 
   return (
     <div className='container'>
       <h1 className='title'>ToDo List</h1>
       <AddTaskInput onAddTask={addTask} />
-      {tasks.map((el) => (
+      {state.tasks.map((el) => (
         <ToDo
           task={el.task}
           key={el.id}
