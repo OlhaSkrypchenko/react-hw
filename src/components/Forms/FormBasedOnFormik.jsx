@@ -1,21 +1,7 @@
 import './form.css';
-
-import Button from '../Button/Button';
 import { Formik, Field, Form } from 'formik';
-import * as Yup from 'yup';
-
-const SignUpSchema = Yup.object().shape({
-  userName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .matches(/^\D*$/g, 'no digits')
-    .required('Required'),
-  email: Yup.string()
-    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email')
-    .email('Invalid email')
-    .required('Required'),
-  password: Yup.string().min(5, 'Too Short!').required('Required'),
-});
+import Button from '../Button/Button';
+import schema from '../../reusableCode/schema';
 
 function FormBasedOnFormik() {
   return (
@@ -25,10 +11,10 @@ function FormBasedOnFormik() {
         email: '',
         password: '',
       }}
-
-      validationSchema={SignUpSchema}
-      onSubmit={(values) => {
+      validationSchema={schema}
+      onSubmit={(values, { resetForm }) => {
         console.log(values);
+        resetForm({ values: '' });
       }}>
       {({ errors, touched, submitCount }) => (
         <Form className='form'>
@@ -36,9 +22,10 @@ function FormBasedOnFormik() {
             <span>Name</span>
             <Field
               name='userName'
-              className={errors.userName ? 'invalid' : ''} />
+              className={errors.userName ? 'invalid' : ''}
+            />
             {errors.userName && touched.userName && submitCount ? (
-              <div>{errors.userName}</div>
+              <span>{errors.userName}</span>
             ) : null}
           </label>
           <label>
@@ -46,17 +33,21 @@ function FormBasedOnFormik() {
             <Field
               name='email'
               type='email'
-              className={errors.email ? 'invalid' : ''} />
-            {errors.email && touched.email && submitCount ? <div>{errors.email}</div> : null}
+              className={errors.email ? 'invalid' : ''}
+            />
+            {errors.email && touched.email && submitCount ? (
+              <span>{errors.email}</span>
+            ) : null}
           </label>
           <label>
             <span>Password</span>
             <Field
               name='password'
               type='password'
-              className={errors.password ? 'invalid' : ''} />
+              className={errors.password ? 'invalid' : ''}
+            />
             {errors.password && touched.password && submitCount ? (
-              <div>{errors.password}</div>
+              <span>{errors.password}</span>
             ) : null}
           </label>
           <div className='btn-wrapper'>
