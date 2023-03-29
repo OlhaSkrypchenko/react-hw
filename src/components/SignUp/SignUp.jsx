@@ -1,7 +1,7 @@
 import "./signUp.css";
 
 import { Component } from "react";
-import FormBasedOnFormik from "../form/Form";
+import FormBasedOnFormik from "../Forms/FormBasedOnFormik";
 
 
 class SignUp extends Component {

@@ -1,7 +1,6 @@
 import './form.css';
 
-import React from 'react';
-import Button from '../button/Button';
+import Button from '../Button/Button';
 import { Formik, Field, Form } from 'formik';
 import * as Yup from 'yup';
 
@@ -27,21 +26,18 @@ function FormBasedOnFormik() {
         password: '',
       }}
 
-      // validateOnChange={false}
-      // validateOnBlur={false}
       validationSchema={SignUpSchema}
       onSubmit={(values) => {
         console.log(values);
       }}>
-      {({ errors, touched }) => (
+      {({ errors, touched, submitCount }) => (
         <Form className='form'>
           <label>
             <span>Name</span>
             <Field
               name='userName'
-              className={errors.userName ? 'invalid' : ''}
-            />
-            {errors.userName && touched.userName ? (
+              className={errors.userName ? 'invalid' : ''} />
+            {errors.userName && touched.userName && submitCount ? (
               <div>{errors.userName}</div>
             ) : null}
           </label>
@@ -50,18 +46,16 @@ function FormBasedOnFormik() {
             <Field
               name='email'
               type='email'
-              className={errors.email ? 'invalid' : ''}
-            />
-            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+              className={errors.email ? 'invalid' : ''} />
+            {errors.email && touched.email && submitCount ? <div>{errors.email}</div> : null}
           </label>
           <label>
             <span>Password</span>
             <Field
               name='password'
               type='password'
-              className={errors.password ? 'invalid' : ''}
-            />
-            {errors.password && touched.password ? (
+              className={errors.password ? 'invalid' : ''} />
+            {errors.password && touched.password && submitCount ? (
               <div>{errors.password}</div>
             ) : null}
           </label>
