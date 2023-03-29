@@ -1,110 +1,86 @@
-import { Component } from "react";
-import Button from "../button/Button";
-import "./form.css";
+import './form.css';
 
+import React from 'react';
+import Button from '../button/Button';
+import { Formik, Field, Form } from 'formik';
+import * as Yup from 'yup';
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: {
-        value: "",
-        valid: true,
-      },
-      email: {
-        value: "",
-        valid: true,
-      },
-      password: {
-        value: "",
-        valid: true,
-      },
-    };
+const SignUpSchema = Yup.object().shape({
+  userName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .matches(/^\D*$/g, 'no digits')
+    .required('Required'),
+  email: Yup.string()
+    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Invalid email')
+    .email('Invalid email')
+    .required('Required'),
+  password: Yup.string().min(5, 'Too Short!').required('Required'),
+});
 
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+function FormBasedOnFormik() {
+  return (
+    <Formik
+      initialValues={{
+        userName: '',
+        email: '',
+        password: '',
+      }}
 
-  isValidData(name, value) {
-    switch(name) {
-        case 'name': 
-            const regexp = /\d/g;
-            return value.length > 1 && !regexp.test(value);
-        case 'email':
-            const regexp1 = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
-            return regexp1.test(value);
-        case 'password':
-            return value.length >= 5;
-        default: return false;
-    }
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    const isValid = this.isValidData(name, value);
-
-    this.setState({ [name]: {'value': value, 'valid': isValid}});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const data = {...this.state};
-    for (let key in data) {
-        const isValid = this.isValidData(key, data[key].value);
-        if (!isValid) {
-            this.setState({ [key]: {'value': data[key].value, 'valid': isValid}});
-            return console.log('invalid data')
-        }
-    }
-    return console.log(`Name: ${data.name.value}, email: ${data.email.value}, password: ${data.password.value}`);
-    
-  }
-
-  render() {
-    return (
-      <form className="form" onSubmit={this.handleSubmit}>
-        <label>
-          <span>Name</span>
-          <input
-            type="text"
-            className= {`name ${this.state.name.valid? '' : 'invalid'}`}
-            name="name"
-            value={this.state.name.value}
-            onChange={this.handleInputChange}
-          />
-          {!this.state.name.valid && <span>Name should have more than 1 character and no digits</span>}
-        </label>
-        <label>
-          <span>Email</span>
-          <input
-            type="email"
-            className={`email ${this.state.email.valid? '' : 'invalid'}`}
-            name="email"
-            value={this.state.email.value}
-            onChange={this.handleInputChange}
-          />
-           {!this.state.email.valid && <span>Email is not valid</span>}
-        </label>
-        <label>
-          <span>Password</span>
-          <input
-            type="password"
-            className={`password ${this.state.password.valid? '' : 'invalid'}`}
-            name="password"
-            value={this.state.password.value}
-            onChange={this.handleInputChange}
-          />
-          {!this.state.password.valid && <span>Password should have more than 4 characters</span>}
-        </label>
-        <div className="btn-wrapper">
-            <Button type="submit" color="dark">Create an account</Button>
-            <Button type="button" color="light">Sign up with Google</Button>
-        </div>
-      </form>
-    );
-  }
+      // validateOnChange={false}
+      // validateOnBlur={false}
+      validationSchema={SignUpSchema}
+      onSubmit={(values) => {
+        console.log(values);
+      }}>
+      {({ errors, touched }) => (
+        <Form className='form'>
+          <label>
+            <span>Name</span>
+            <Field
+              name='userName'
+              className={errors.userName ? 'invalid' : ''}
+            />
+            {errors.userName && touched.userName ? (
+              <div>{errors.userName}</div>
+            ) : null}
+          </label>
+          <label>
+            <span>Email</span>
+            <Field
+              name='email'
+              type='email'
+              className={errors.email ? 'invalid' : ''}
+            />
+            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+          </label>
+          <label>
+            <span>Password</span>
+            <Field
+              name='password'
+              type='password'
+              className={errors.password ? 'invalid' : ''}
+            />
+            {errors.password && touched.password ? (
+              <div>{errors.password}</div>
+            ) : null}
+          </label>
+          <div className='btn-wrapper'>
+            <Button
+              type='submit'
+              color='dark'>
+              Create an account
+            </Button>
+            <Button
+              type='button'
+              color='light'>
+              Sign up with Google
+            </Button>
+          </div>
+        </Form>
+      )}
+    </Formik>
+  );
 }
 
-export default Form;
+export default FormBasedOnFormik;

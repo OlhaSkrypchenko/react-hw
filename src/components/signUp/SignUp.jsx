@@ -1,6 +1,8 @@
-import { Component } from "react";
-import Form from "../form/Form";
 import "./signUp.css";
+
+import { Component } from "react";
+import FormBasedOnFormik from "../form/Form";
+
 
 class SignUp extends Component {
   render() {
@@ -12,7 +14,7 @@ class SignUp extends Component {
             Let’s get started with your 30 days free trial
           </p>
         </div>
-        <Form />
+        <FormBasedOnFormik />
         <p className="question">
           Already have an account?
           <a className="signUp-link" href="#sign_up">

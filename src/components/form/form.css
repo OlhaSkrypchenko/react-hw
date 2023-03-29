@@ -23,7 +23,7 @@ input {
   border-bottom: 1px solid #000000;
 }
 
-.invalid + span {
+.invalid + div {
   position: absolute;
   bottom: -20px;
   color: rgb(224, 10, 10);

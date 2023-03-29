@@ -10,11 +10,15 @@
   line-height: 30px;
   color: #ffffff;
   cursor: pointer;
+  outline: none;
+  border: 1px solid #000;
 }
 
 .btn-light {
   background: #fff;
   color: #000;
+
+border: 1px solid #8D8D8D;
 }
 
 .btn-dark {
