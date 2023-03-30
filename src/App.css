@@ -35,6 +35,7 @@
   font-size: 12px;
   line-height: 25px;
   color: #495057;
+  text-decoration: none;
 }
 
 .category-title::first-letter {
