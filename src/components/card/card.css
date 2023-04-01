@@ -7,6 +7,8 @@ img {
 .card {
   position: relative;
   width: 310px;
+  color: #495057;
+
 }
 
 .category {
@@ -41,6 +43,7 @@ img {
   height: 50px;
   margin: 15px 0;
   overflow-y: hidden;
+ 
 }
 
 .description {
