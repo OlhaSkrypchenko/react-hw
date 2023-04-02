@@ -1,0 +1,98 @@
+
+.title-section {
+  text-align: center;
+  padding: 193px 0;
+  background-image: url('./../../../public/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.article-title {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  color: #ffffff;
+  margin: 0;
+}
+
+.article-description {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: #e5e5e5;
+  margin: 13px 0;
+}
+
+.article-author {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.article-content {
+  padding: 100px 70px;
+  display: flex;
+  gap: 53px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.date-container {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 25px;
+  color: #495057;
+  display: flex;
+  gap: 50px;
+}
+
+.article-date {
+  position: relative;
+}
+
+.article-date:after {
+  content: '';
+  width: 35px;
+  height: 78px;
+  border-bottom: 1px solid #c4c4c4;
+  right: -41px;
+  top: -65px;
+  position: absolute;
+}
+
+.article {
+  max-width: 860px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  /* or 179% */
+
+  color: #495057;
+ 
+}
+
+.article-category {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  color: #6c757d;
+  padding: 5px 10px;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin: 50px 0;
+  width: fit-content;
+}
+
+
+.article-author-content {
+    margin: 0;
+    padding: 55px 0;
+    border-top:  0.5px solid #C4C4C4;
+}

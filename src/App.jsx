@@ -11,6 +11,7 @@ function App() {
     <Routes>
       <Route path='/' element={<MainPage/>}/>
       <Route path='/article/:id' element={<Article/>}/>
+      {/* <Route path='*' element={<MainPage/>}/> */}
     </Routes>
   )
       

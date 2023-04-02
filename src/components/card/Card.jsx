@@ -1,19 +1,5 @@
 import "./card.css";
-
-function getDateFormat(str) {
-  const date = new Date(str).toLocaleDateString();
-  const arr = date.split("/").map((el) => {
-    if (el.length === 1) {
-      el = `0${el}`;
-    }
-
-    return el;
-  });
-
-  const [month, day, year] = arr;
-
-  return `${day}.${month}.${year}`;
-}
+import { getDateFormat } from '../../reusableFunctions/reusableFunctions'
 
 function Card({
   categoryId,
