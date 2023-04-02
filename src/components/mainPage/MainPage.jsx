@@ -1,71 +1,48 @@
-import { useState, useEffect, useCallback } from 'react';
-import './mainPage.css';
+import { useState, useEffect, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import './mainPage.css';
 import Card from '../card/Card';
-import { Link } from 'react-router-dom';
+import Category from '../category/Category';
 
-const postsUrl = '/db.json';
-const categoriesUrl = '/categories.json';
-const defaultFilters = { title: 'All' };
+const getArticles = axios.get('/db.json');
+const getCategories = axios.get('/categories.json');
 
 function MainPage() {
+  const { category = 'All' } = useParams();
+
   const [isLoading, setIsLoading] = useState(false);
-  const [titleIsLoading, setTitleIsLoading] = useState(false);
   const [isError, setIsError] = useState('');
 
   const [categories, setCategories] = useState([]);
   const [data, setData] = useState([]);
-  const [filters, setFilters] = useState(defaultFilters);
-  const [filteredData, setFilteredData] = useState([]);
-
-
-  useEffect(() => {
-    setIsLoading(true);
-    axios
-      .get(postsUrl)
-      .then((response) => {
-        setData(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsError(error.message);
-        setIsLoading(false);
-      });
-
-    
-  }, []);
 
   useEffect(()=> {
-    setTitleIsLoading(true);
-    axios.get(categoriesUrl).then((response) => {
-      setCategories([{ id: 0, title: 'All' }, ...response.data]);
-      setTitleIsLoading(false);})
-    .catch((error) => {
+    setIsLoading(true);
+    Promise.all([getArticles, getCategories]).then(values => {
+      const [dataValues, categoriesValues] = values;
+      setData(dataValues.data);
+      setCategories([{ id: 0, title: 'All' }, ...categoriesValues.data]);
+      setIsLoading(false);
+    }).catch((error)=> {
       setIsError(error.message);
-      setTitleIsLoading(false);
+        setIsLoading(false);
     });
-  }, [])
+  }, []);
 
-  const filterCards = useCallback(() => {
-    if (filters.title === 'All') {
-      setFilteredData([...data]);
+  const filteredData= useMemo(()=>{
+    if (category === 'All') {
+     return([...data]);
     } else {
-      setFilteredData(
-        [...data].filter(
-          (el) => el.category.title === filters.title
-        )
+     return(
+        [...data].filter((el) => el.category.title.toLowerCase() === category)
       );
     }
-  }, [data, filters.title]);
+  }, [category, data]);
 
-  useEffect(() => {
-    filterCards();
-  }, [filterCards]);
-
-console.log(data);
   return (
     <>
-      {isLoading || titleIsLoading ? (
+      {isLoading ? (
         <div className='loading'>Loading ...</div>
       ) : isError.length > 0 ? (
         <p className='error'>{isError}</p>
@@ -73,20 +50,12 @@ console.log(data);
         <div className='container'>
           <h1 className='main-title'>Popular topics</h1>
           <div className='categories'>
-            {categories.map((el, index) => (
-              <a
-                href='/#'
-                className={`category-title ${
-                  el.title === filters.title ? 'picked' : ''
-                }`}
+            {categories.map((el) => (
+              <Category
+                title={el.title}
+                id={el.id}
                 key={el.id}
-                onClick={() => {
-                  if (filters.title !== el.title) {
-                    setFilters({ title: el.title });
-                  }
-                }}>
-                {el.title}
-              </a>
+              />
             ))}
           </div>
           <div className='cards-container'>

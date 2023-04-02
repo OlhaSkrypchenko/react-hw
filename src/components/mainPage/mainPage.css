@@ -30,22 +30,6 @@
     color: #495057;
   }
   
-  .category-title {
-    font-weight: 700;
-    font-size: 12px;
-    line-height: 25px;
-    color: #495057;
-    text-decoration: none;
-  }
-  
-  .category-title::first-letter {
-    text-transform: capitalize;
-  }
-  
-  .category-title.picked {
-    color: #d4a373;
-  }
-  
   .link {
     text-decoration: none;
   }

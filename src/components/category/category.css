@@ -1,0 +1,11 @@
+.category-title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 25px;
+  color: #495057;
+  text-decoration: none;
+}
+
+.category-title.active {
+  color: #d4a373;
+}
